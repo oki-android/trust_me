@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    }
+    .login-box {
+      width: min(90%, 360px);
+      padding: 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    h1 { margin: 0 0 8px; text-align: center; color: #1f2937; }
+    .subtitle { margin: 0 0 24px; text-align: center; color: #6b7280; }
+    label { display: block; margin: 14px 0 6px; color: #374151; }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    input:focus { outline: 2px solid #a5b4fc; border-color: #6366f1; }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border: 0;
+      border-radius: 8px;
+      background: #4f46e5;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { background: #4338ca; }
+    #message { min-height: 20px; margin: 14px 0 0; text-align: center; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main class="login-box">
+    <h1>Đăng nhập</h1>
+    <p class="subtitle">Chào mừng bạn quay trở lại!</p>
+
+    <form id="loginForm">
+      <label for="email">Email hoặc tên đăng nhập</label>
+      <input id="email" name="email" type="text" autocomplete="username" required
+             placeholder="Nhập email hoặc tên đăng nhập">
+
+      <label for="password">Mật khẩu</label>
+      <input id="password" name="password" type="password" autocomplete="current-password"
+             required placeholder="Nhập mật khẩu">
+
+      <button type="submit">Đăng nhập</button>
+      <p id="message" role="status"></p>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      if (!username || !password) {
+        message.textContent = "Bạn hãy nhập đầy đủ thông tin nhé.";
+        message.style.color = "#dc2626";
+        return;
+      }
+
+      message.textContent = "Giao diện đã nhận thông tin. Bạn cần kết nối máy chủ để đăng nhập thật.";
+      message.style.color = "#2563eb";
+    });
+  </script>
+</body>
+</html>
